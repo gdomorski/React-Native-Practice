@@ -1,3 +1,4 @@
+var Moment = require('moment')
 var React = require('react-native');
 var AppRegistry = React.AppRegistry;
 var Text = React.Text;
@@ -10,7 +11,7 @@ var Weekdays = React.createClass({
   render: function(){
     return <View style={Styles.container}>
       <Text>
-        Days of the Week:
+      {Moment().format('ddd')}
       </Text>
       {this.days()}
     </View>
