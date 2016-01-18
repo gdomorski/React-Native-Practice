@@ -10,16 +10,19 @@ var DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'S
 var Weekdays = React.createClass({
   render: function(){
     return <View style={Styles.container}>
-      <Text>
-      {Moment().format('ddd')}
-      </Text>
       {this.days()}
     </View>
   },
   days: function(){
-    return DAYS.map(function(day){
-      return <DayItem day={day} />
-    });
+    var daysItems = [];
+
+    for(var i = 0; i < 7; i++){
+      var day = Moment().add(i, 'days').format('dddd');
+      daysItems.push(
+        <DayItem day={day} daysUntil={i} />
+      )
+    }
+    return daysItems
   }
 });
 
